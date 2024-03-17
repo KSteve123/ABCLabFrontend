@@ -27,13 +27,13 @@ export default function StaffLogin() {
         event.preventDefault()
         const Patient={email,password}
         console.log(Patient)
-        fetch("http://localhost:8080/loginuser/check",{
+        fetch("http://localhost:8080/loginuser/staffcheck",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body: JSON.stringify(Patient)
     }).then(()=>{
       
-      window.location.href = '/ReturnUser'
+      window.location.href = '/ReturnStaff'
     })
 
    
@@ -107,18 +107,6 @@ export default function StaffLogin() {
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="/StaffLogin" variant="body2">
-                  Login as Staff
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/PatientRegistration" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>
