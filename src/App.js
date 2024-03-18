@@ -27,7 +27,7 @@ function App() {
   return (
     <BrowserRouter>
    <Routes>
-    <Route index element={<AppiontmentsView/>} />
+    <Route index element={<Patientlogin/>} />
     <Route path='/PatientRegistration' element={<Patientregistration/>} />
     <Route path='/ReturnUser' element={<UserCheck/>} />
     <Route path='/ReturnStaff' element={<StaffCheck/>} />

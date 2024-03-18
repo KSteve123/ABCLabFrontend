@@ -24,7 +24,7 @@ export default function AddTest() {
     e.preventDefault()
     const Test={testName,testAmount}
     console.log(Test)
-    fetch("http://localhost:8080/test/add",{
+    fetch("http://localhost:8080/test/addTest",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify(Test)

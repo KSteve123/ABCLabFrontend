@@ -15,29 +15,35 @@ const EditAppointment = () => {
 
 	const { id } = useParams();
 
-	const [patient, setPatient] = useState({
+	const [appointment, setAppointment] = useState({
 		technicianID:"",
 		payment:"",
+		patientId:"",
+		testName:"",
+		
 	});
 	const {
+		
 		technicianID,
 		payment,
-	} = patient;
+		patientId,
+		testName,
+	} = appointment;
 
 	useEffect(() => {
-		loadPatient();
+		loadAppointment();
 	}, []);
 
-	const loadPatient = async () => {
+	const loadAppointment = async () => {
 		const result = await axios.get(
 			`http://localhost:8080/appointment/appointment/${id}`
 		);
-		setPatient(result.data);
+		setAppointment(result.data);
 	};
 
 	const handleInputChange = (e) => {
-		setPatient({
-			...patient,
+		setAppointment({
+			...appointment,
 			[e.target.name]: e.target.value,
 		});
 	};
@@ -45,9 +51,9 @@ const EditAppointment = () => {
 		e.preventDefault();
 		await axios.put(
 			`http://localhost:8080/appointment/update/${id}`,
-			patient
+			appointment
 		);
-		navigate("/viewPatient");
+		navigate("/viewAppointment");
 	};
 
 	return (
@@ -58,7 +64,7 @@ const EditAppointment = () => {
 					<label
 						className="input-group-text"
 						htmlFor="name">
-						Name
+						Technician ID
 					</label>
 					<input
 						className="form-control col-sm-6"
@@ -75,7 +81,7 @@ const EditAppointment = () => {
 					<label
 						className="input-group-text"
 						htmlFor="email">
-						Email
+						Payment Status
 					</label>
 					<input
 						className="form-control col-sm-6"
