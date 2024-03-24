@@ -1,5 +1,5 @@
 import ViewAppointments from "./PatientAppointments"
-
+import StaffNavBar from "../common/StaffNavBar";
 
 
 export default function StaffMain(){
@@ -14,7 +14,7 @@ export default function StaffMain(){
 
     }
     const AddTechnicians=(event3)=>{
-        window.location.href = '/AddTechnicians'
+        window.location.href = '/AddTechnician'
 
     }
 
@@ -23,12 +23,30 @@ export default function StaffMain(){
 
     }
 
+    const AddDoctors=(event5)=>{
+        window.location.href = '/AddDoctor'
+
+    }
+
 return(
 <div>
-<button type="button" class="btn btn-dark" onClick={AddTest}>Add Test</button><br></br>
-<button type="button" class="btn btn-light" onClick={ViewPatients}>View Patients</button><br></br>
-<button type="button" class="btn btn-warning" onClick={AddTechnicians}>Add Technicians</button><br></br>
-<button type="button" class="btn btn-secondary" onClick={ViewAppointments}>View Appointment</button><br></br>
+    <StaffNavBar/><br></br>
+    <h1>Welcome</h1><br></br>
+    <div class="offset-md-2">
+<div>
+<button type="button" class="btn btn-dark" onClick={AddTest}>Add Test</button>
+</div><br></br>
+<div>
+<button type="button" class="btn btn-light" onClick={ViewPatients}>View Patients</button>
+</div><br></br>
+<div>
+<button type="button" class="btn btn-warning" onClick={AddTechnicians}>Add Technicians</button>
+</div><br></br>
+<div>
+<button type="button" class="btn btn-secondary" onClick={ViewAppointments}>View Appointment</button>
+</div><br></br>
+<button type="button" class="btn btn-secondary" onClick={AddDoctors}>Add Doctor</button><br></br>
+</div>
 </div>
 
 );

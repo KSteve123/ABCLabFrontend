@@ -3,6 +3,7 @@ import React, {
 	useState,
 } from "react";
 import axios from "axios";
+import StaffNavBar from "../common/StaffNavBar";
 
 import {
 	Link,
@@ -55,6 +56,8 @@ const EditPatient = () => {
 	};
 
 	return (
+		<div>
+			<StaffNavBar/>
 		<div className="col-sm-8 py-2 px-5 offset-2 shadow">
 			<h2 className="mt-5"> Edit Patient</h2>
 			<form onSubmit={(e) => updatePatient(e)}>
@@ -137,7 +140,7 @@ const EditPatient = () => {
 
 					<div className="col-sm-2">
 						<Link
-							to={"/ViewPatients"}
+							to={"/ViewPatient"}
 							type="submit"
 							className="btn btn-outline-warning btn-lg">
 							Cancel
@@ -145,6 +148,7 @@ const EditPatient = () => {
 					</div>
 				</div>
 			</form>
+		</div>
 		</div>
 	);
 };

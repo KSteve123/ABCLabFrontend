@@ -5,6 +5,7 @@ import React, {
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import StaffNavBar from "../common/StaffNavBar";
 
 const PatientProfile = () => {
 	const {id} = useParams();
@@ -32,6 +33,8 @@ const PatientProfile = () => {
 	
 
 	return (
+		<div>
+			<StaffNavBar/>
 		<section
 			className="shadow"
 			style={{ backgroundColor: "whitesmoke" }}>
@@ -129,6 +132,7 @@ const PatientProfile = () => {
 				</div>
 			</div>
 		</section>
+		</div>
 	);
 };
 

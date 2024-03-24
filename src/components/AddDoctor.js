@@ -9,28 +9,28 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import StaffNavBar from "../common/StaffNavBar";
 import axios from 'axios';
 import Search from "../common/Search";
 import addNotification from 'react-push-notification';
+import StaffNavBar from "../common/StaffNavBar";
+
 
 const defaultTheme = createTheme();
 
 
 
-export default function AddTest() {
-  const [test, setTests] = React.useState([]);
+export default function AddDoctor() {
+  const[name=null, setName] = React.useState('')
+  const [doctor, setDoctors] = React.useState([]);
   const [search, setSearch] = React.useState("");
-  const[testName=null, setName] = React.useState('')
-  const[testAmount=null, setAmount] = React.useState('')
-
+  
   React.useEffect(() => {
-		loadTests();
+		loadDoctors();
 	}, []);
 
-  const loadTests = async () => {
+  const loadDoctors = async () => {
 		const result = await axios.get(
-			"http://localhost:8080/test/getAll",
+			"http://localhost:8080/doctor/getAll",
 			{
 				validateStatus: () => {
 					return true;
@@ -38,27 +38,27 @@ export default function AddTest() {
 			}
 		);
 		
-			setTests(result.data);
+			setDoctors(result.data);
            
 		
 	};
 
   const Register=(e)=>{
     e.preventDefault()
-    const Test={testName,testAmount}
-    console.log(Test)
-    fetch("http://localhost:8080/test/addTest",{
+    const Doctor={name}
+    console.log(Doctor)
+    fetch("http://localhost:8080/doctor/addDoctor",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
-    body: JSON.stringify(Test)
+    body: JSON.stringify(Doctor)
 }).then(response => {
   if (response.status === 200) {
     addNotification({
     title: 'Notification',
-    message:"Test Added",
+    message:"Doctor Added",
     native:true     
     })
-    window.location.href = '/AddTest'
+    window.location.href = '/AddDoctor'
   } else {
     addNotification({
     title: 'status',
@@ -87,33 +87,21 @@ export default function AddTest() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Add Test
+            Add Doctor
           </Typography>
           <Box component="form" sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   autoComplete="off"
-                  name="TestName"
+                  name="name"
                   required
                   fullWidth
-                  id="testName"
-                  label="Test Name"
+                  id="DoctorName"
+                  label="Doctor Name"
                   autoFocus
-                  value={testName}
+                  value={name}
                   onChange={(e)=>setName(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-              <TextField
-                  autoComplete="off"
-                  name="Amount"
-                  required
-                  fullWidth
-                  label="Amount"
-                  value={testAmount}
-                  onChange={(e)=>setAmount(e.target.value)}
-                  type="number"
                 />
               </Grid>
             </Grid>
@@ -124,37 +112,34 @@ export default function AddTest() {
               onClick={Register}
               sx={{ mt: 3, mb: 2 }}
             >
-              Create Test
+              Add Doctor
             </Button>
           </Box>
         </Box>
       </Container>
     </ThemeProvider><br></br>
-
     <table className="table table-bordered table-hover shadow">
 				<thead>
 					<tr className="text-center">
           <th> </th>
-						<th>Test ID</th>
-						<th>Test Name</th>
-						<th>Amount</th>
-            </tr>
+					<th>Doctor ID</th>
+					<th>Doctor Name</th>	
+          </tr>
 				</thead>
         <tbody className="text-center">
-					{test
+					{doctor
 						.filter((pt) =>
-							pt.testName
+							pt.name
 								
 								.includes(search)
 						)
-						.map((test, index) => (
-							<tr key={test.id}>
+						.map((doctor, index) => (
+							<tr key={doctor.id}>
 								<th scope="row" key={index}>
 									{index + 1}
 								</th>
-								<td>{test.id}</td>
-								<td>{test.testName}</td>
-								<td>{test.testAmount}</td>
+								<td>{doctor.id}</td>
+								<td>{doctor.name}</td>
 							</tr>
 						))}
 				</tbody>

@@ -13,7 +13,7 @@ fetch("http://localhost:8080/loginuser/Authenticaton")
           if (ID!=="Incorrect Credential") {
             const id = ID;
             localStorage.setItem('ID', id);
-            window.location.href = '/StaffMain'
+            window.location.href = '/PatientMain'
           } else {
             addNotification({
               title: 'Warning',

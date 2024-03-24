@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Search from "../common/Search";
+import StaffNavBar from "../common/StaffNavBar";
 
 const PatientsView = () => {
 	const [patients, setPatients] = useState([]);
@@ -44,6 +45,8 @@ const PatientsView = () => {
 	
 
 	return (
+		<div>
+			<StaffNavBar/>
 		<section>
 			<Search
 				search={search}
@@ -106,6 +109,7 @@ const PatientsView = () => {
 				</tbody>
 			</table>
 		</section>
+		</div>
 	);
 };
 

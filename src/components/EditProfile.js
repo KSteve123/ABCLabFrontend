@@ -3,12 +3,13 @@ import React, {
 	useState,
 } from "react";
 import axios from "axios";
-
+import addNotification from 'react-push-notification';
 import {
 	Link,
 	useNavigate,
 	useParams,
 } from "react-router-dom";
+import PatientNavBar from "../common/PatientNavBar";
 
 const EditProfile = () => {
 	let navigate = useNavigate();
@@ -50,11 +51,29 @@ const EditProfile = () => {
 		await axios.put(
 			`http://localhost:8080/patient/update/${id}`,
 			patient
-		);
-		navigate("/viewPatient");
+		).then(response => {
+			if (response.status === 200) {
+			  addNotification({
+				title: 'Notification',
+				message:"Profile Updated",
+				native:true     
+			  })
+			  window.location.href = '/PatientMain'
+			} else {
+			  addNotification({
+				title: 'status',
+				message:"Update Failed",
+				native:true        
+			  })
+			}
+		  });
+
+		  
 	};
 
 	return (
+		<div>
+			<PatientNavBar/>
 		<div className="col-sm-8 py-2 px-5 offset-2 shadow">
 			<h2 className="mt-5"> Edit Patient</h2>
 			<form onSubmit={(e) => updatePatient(e)}>
@@ -145,6 +164,7 @@ const EditProfile = () => {
 					</div>
 				</div>
 			</form>
+		</div>
 		</div>
 	);
 };

@@ -4,6 +4,7 @@ import React, {
 } from "react";
 import axios from "axios";
 import Search from "../common/Search";
+import PatientNavBar from "../common/PatientNavBar";
 
 const ViewAppointments = () => {
 	const [patients, setPatients] = useState([]);
@@ -33,6 +34,8 @@ const ViewAppointments = () => {
 	
 
 	return (
+		<div>
+			<PatientNavBar/>
 		<section>
             <div class="offset-md-2 col-md-8 mt-2  p-2">
 			<Search
@@ -75,6 +78,7 @@ const ViewAppointments = () => {
 			</table>
             </div>
 		</section>
+		</div>
 	);
 };
 

@@ -3,7 +3,8 @@ import React, {
 	useState,
 } from "react";
 import axios from "axios";
-
+import addNotification from 'react-push-notification';
+import PatientNavBar from "../common/PatientNavBar";
 
 export default function AddAppointment() {
 
@@ -25,9 +26,22 @@ export default function AddAppointment() {
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body: JSON.stringify(Appointment)
-  }).then(()=>{
-      console.log("Registration Complete")
-  })
+  }).then(response => {
+    if (response.status === 200) {
+      addNotification({
+      title: 'Notification',
+      message:"Appointment is confirmed",
+      native:true     
+      })
+      window.location.href = '/PatientMain'
+    } else {
+      addNotification({
+      title: 'status',
+      message:"Appointment confirmation failed",
+      native:true        
+      })
+    }
+    });
   }
 
 	useEffect(() => {
@@ -84,6 +98,9 @@ export default function AddAppointment() {
       };
 
     return(
+      <div>
+      <PatientNavBar/>
+      
       <div class="offset-md-4">
       <h1>Make Appointment</h1>
       
@@ -121,6 +138,7 @@ export default function AddAppointment() {
   </div>
 </form>
 </body>
+</div>
 </div>
     );
 }

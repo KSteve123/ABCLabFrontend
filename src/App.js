@@ -19,6 +19,9 @@ import StaffMain from './components/StaffMain';
 import StaffCheck from './components/ReturnStaff';
 import AppiontmentsView from './components/ViewAppointment';
 import EditAppointment from './components/AppointmentEdit';
+import AddDoctor from './components/AddDoctor';
+import AddTechnician from './components/AddTechnician';
+
 
 
 
@@ -43,6 +46,9 @@ function App() {
     <Route path='/AddTest' element={<AddTest/>} />
     <Route path='/AppointmentEdit/:id' element={<EditAppointment/>} />
     <Route path='/ViewAppointment' element={<AppiontmentsView/>} />
+    <Route path='/AddTechnician' element={<AddTechnician/>} />
+    <Route path='/AddDoctor' element={<AddDoctor/>} />
+    
    </Routes>
    </BrowserRouter>
   );

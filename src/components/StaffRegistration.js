@@ -17,8 +17,8 @@ const defaultTheme = createTheme();
 
 
 export default function StaffSignUp() {
-  const[userName, setName] = React.useState('')
-  const[password, setPassword] = React.useState('')
+  const[userName=null, setName] = React.useState('')
+  const[password=null, setPassword] = React.useState('')
 
   const Register=(e)=>{
     e.preventDefault()
