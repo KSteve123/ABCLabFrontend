@@ -52,6 +52,7 @@ const ViewAppointments = () => {
 						<th>Test</th>
 						<th>Payment</th>
 						<th>Date</th>
+						<th>Report</th>
 					</tr>
 				</thead>
 
@@ -72,6 +73,7 @@ const ViewAppointments = () => {
 								<td>{patient.testName}</td>
 								<td>{patient.payment}</td>
                                 <td>{patient.date}</td>
+								<td><a href={`http://Dropbox.com/${patient.report}`} target="_blank">{patient.report}</a></td>
 							</tr>
 						))}
 				</tbody>

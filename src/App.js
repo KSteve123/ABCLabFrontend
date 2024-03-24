@@ -21,6 +21,7 @@ import AppiontmentsView from './components/ViewAppointment';
 import EditAppointment from './components/AppointmentEdit';
 import AddDoctor from './components/AddDoctor';
 import AddTechnician from './components/AddTechnician';
+import UploadReport from './components/UploadReport';
 
 
 
@@ -48,6 +49,7 @@ function App() {
     <Route path='/ViewAppointment' element={<AppiontmentsView/>} />
     <Route path='/AddTechnician' element={<AddTechnician/>} />
     <Route path='/AddDoctor' element={<AddDoctor/>} />
+    <Route path='/UploadReport/:id' element={<UploadReport/>} />
     
    </Routes>
    </BrowserRouter>

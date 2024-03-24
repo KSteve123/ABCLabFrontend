@@ -13,14 +13,14 @@ import Search from "../common/Search";
 import StaffNavBar from "../common/StaffNavBar";
 
 const AppiontmentsView = () => {
-	const [patients, setPatients] = useState([]);
+	const [Appointment, setAppointments] = useState([]);
 	const [search, setSearch] = useState("");
 
 	useEffect(() => {
-		loadPatients();
+		loadAppointments();
 	}, []);
 
-	const loadPatients = async () => {
+	const loadAppointments = async () => {
 		const result = await axios.get(
 			"http://localhost:8080/appointment/getAll",
 			{
@@ -30,7 +30,7 @@ const AppiontmentsView = () => {
 			}
 		);
 		
-			setPatients(result.data);
+			setAppointments(result.data);
            
 		
 	};
@@ -39,7 +39,7 @@ const AppiontmentsView = () => {
 		await axios.delete(
 			`http://localhost:8080/appointment/delete/${id}`
 		);
-		loadPatients();
+		loadAppointments();
 	};
 
 	
@@ -62,30 +62,39 @@ const AppiontmentsView = () => {
 						<th>Doctor Name</th>
                         <th>Payment</th>
                         <th>Date</th>
+						<th>Report</th>
 						<th colSpan="3">Actions</th>
 					</tr>
 				</thead>
 
 				<tbody className="text-center">
-					{patients
+					{Appointment
 						.filter((pt) =>
 							pt.patientId
 								.toLowerCase()
 								.includes(search)
 						)
-						.map((patient) => (
-							<tr key={patient.id}>
+						.map((appointment) => (
+							<tr key={appointment.id}>
 								
-								<td>{patient.id}</td>
-								<td>{patient.patientId}</td>
-								<td>{patient.technicianID}</td>
-								<td>{patient.testName}</td>
-                                <td>{patient.doctorName}</td>
-                                <td>{patient.payment}</td>
-                                <td>{patient.date}</td>
+								<td>{appointment.id}</td>
+								<td>{appointment.patientId}</td>
+								<td>{appointment.technicianID}</td>
+								<td>{appointment.testName}</td>
+                                <td>{appointment.doctorName}</td>
+                                <td>{appointment.payment}</td>
+                                <td>{appointment.date}</td>
+								<td><a href={`http://Dropbox.com/${appointment.report}`} target="_blank">Link</a></td>
 								<td className="mx-2">
 									<Link
-										to={`/AppointmentEdit/${patient.id}`}
+										to={`/AppointmentEdit/${appointment.id}`}
+										className="btn btn-warning">
+										<FaEdit />
+									</Link>
+								</td>
+								<td className="mx-2">
+									<Link
+										to={`/UploadReport/${appointment.id}`}
 										className="btn btn-warning">
 										<FaEdit />
 									</Link>
@@ -94,7 +103,7 @@ const AppiontmentsView = () => {
 									<button
 										className="btn btn-danger"
                                         onClick={() =>
-											handleDelete(patient.id)
+											handleDelete(appointment.id)
 										}
 										>
 										<FaTrashAlt />

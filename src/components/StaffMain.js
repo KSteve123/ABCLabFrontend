@@ -28,6 +28,7 @@ export default function StaffMain(){
 
     }
 
+
 return(
 <div>
     <StaffNavBar/><br></br>
@@ -45,7 +46,9 @@ return(
 <div>
 <button type="button" class="btn btn-secondary" onClick={ViewAppointments}>View Appointment</button>
 </div><br></br>
-<button type="button" class="btn btn-secondary" onClick={AddDoctors}>Add Doctor</button><br></br>
+<div>
+<button type="button" class="btn btn-secondary" onClick={AddDoctors}>Add Doctor</button>
+</div><br></br>
 </div>
 </div>
 
