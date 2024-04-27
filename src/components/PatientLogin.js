@@ -21,7 +21,7 @@ export default function Patientlogin() {
     const[password, setPassword] = React.useState('')
     let x
     
-
+// Verify login credentials
     const LoginCheck=(event)=>{
 
         event.preventDefault()
@@ -48,6 +48,8 @@ export default function Patientlogin() {
   
 
   return (
+    <div>
+      <h1 align="center">ABC Laboratory</h1><br></br>
     <ThemeProvider theme={defaultTheme}>
       <Container component="form" maxWidth="xs"
       
@@ -94,10 +96,6 @@ export default function Patientlogin() {
               value={password}
               onChange={(event)=>setPassword(event.target.value)}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
@@ -123,5 +121,6 @@ export default function Patientlogin() {
         </Box>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }

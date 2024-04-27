@@ -1,7 +1,7 @@
 export default function PatientNavBar() {
 
     let x = localStorage.getItem('ID');
-    if (x==null) {
+    if (x==="null") {
         window.location.href = '/'
         
     }

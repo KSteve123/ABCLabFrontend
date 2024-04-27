@@ -94,10 +94,6 @@ export default function StaffLogin() {
               value={password}
               onChange={(event)=>setPassword(event.target.value)}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth

@@ -4,6 +4,7 @@ export default function PatientMain(){
     
     
     let x = localStorage.getItem('ID')
+    
 
     const MakeAppointment=(event1)=>{
         window.location.href = '/MakeAppointment'
